@@ -2,7 +2,7 @@
 
 ### About
 
-Clone of one the famous e-learning platform made in Ruby on Rails.
+The analogue of one of the famous e-learning platform made with Ruby on Rails.
 Currently under active development.
 
 ---
