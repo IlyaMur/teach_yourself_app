@@ -11,7 +11,8 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   %body
     = render 'layouts/header'
-    = render 'layouts/messages'
     .container
+      .p-1
+      = render 'layouts/messages'
       %p 
       = yield
