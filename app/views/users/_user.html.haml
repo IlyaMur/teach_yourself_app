@@ -1,0 +1,20 @@
+.card
+  .card-header
+    .fa.fa-user
+    = user.email
+  .card-footer
+    Зарегистрирован:
+    = time_ago_in_words(user.created_at)
+    .row
+    Кол-во заходов:
+    = user.sign_in_count
+    .row
+    Текущий онлайн:
+    = user.current_sign_in_at
+    .row
+    Последний онлайн:
+    = user.last_sign_in_at
+    .row
+    Текущий IP:
+    = user.current_sign_in_ip
+
