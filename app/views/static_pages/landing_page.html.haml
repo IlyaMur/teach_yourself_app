@@ -1,7 +1,60 @@
-= link_to privacy_policy_path, class: 'btn btn-lg btn-warning' do
-  %i.fas.fa-file-alt
-  Privacy Policy
-
-= link_to courses_path, class: 'btn btn-success ' do
-  %i.fas.fa-book 
-  Course
+.jumbotron
+  %h1.display-4
+    Что хотите выучить сегодня?
+  .p-2
+  = form_tag(courses_path, method: :get) do
+    .input-group
+      = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Поиск", class: 'form-control-sm'
+      %span.input-group-append
+        %button.btn.btn-primary.btn-sm{:type => "submit"}
+          %span.fa.fa-search{"aria-hidden" => "true"}
+.card-group
+  .card.card-body
+    %h1
+      .fa.fa-graduation-cap
+    .text-center
+    = Course.count
+    курсов
+    .row
+    .text-center
+    %p
+    Открой для себя новые области
+  .card.card-body
+    %h1
+      .fa.fa-chalkboard-teacher
+      /.fa.fa-brain
+    = Course.distinct.count(:user_id)
+    инструкторов
+    .row
+    %p 
+    Выбери себе подходящего учителя
+  .card.card-body
+    %h1
+      .fa.fa-user-graduate
+    = User.count
+    учеников
+    %p
+    .row
+    Присоединяйся и делись знаниями
+  .card.card-body
+    %h1
+      .fa.fa-infinity
+    Пожизненный доступ
+    .row
+    %p
+    Изучай когда тебе удобно
+%hr
+%h3 Популярные курсы
+%p 
+.card-columns
+  = render partial: 'courses/course', collection: @courses
+%hr
+%h3 С высокой оценкой
+%p 
+.card-columns
+  = render partial: 'courses/course', collection: @courses
+%hr
+%h3 Новые курсы
+%p 
+.card-columns
+  = render partial: 'courses/course', collection: @latest_courses
