@@ -1,2 +1,41 @@
-.card-columns
-  = render partial: 'user', collection: @users
+.row
+  .col-md-12
+    .card-columns
+      = render partial: 'user', collection: @users
+
+.row.p-3
+  .col-md-12.offset-2
+    .form-inline.text-center
+      = search_form_for @q do |f|
+        = f.search_field :email_cont, placeholder: 'email'
+        = f.search_field :sign_in_count_eq, placeholder: 'кол-во логинов'
+        = f.search_field :email_or_sign_in_count_eq, placeholder: 'email или логины'
+        = f.submit
+      .ml-2
+.row
+  .col-12.text-right
+    = link_to users_path, class: 'btn btn-primary' do
+      .fa.fa-sync
+.p-1
+%table.table.table-bordered
+  %thead
+    %tr
+      %th id
+      %th= sort_link(@q, :email)
+      %th Регистрация
+      %th Кол-во логинов
+      %th Актуальный логин
+      %th Последний логин
+      %th Настоящий IP
+      %th Последний IP
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.id
+        %td= user.email
+        %td= user.created_at
+        %td= user.sign_in_count
+        %td= user.current_sign_in_at
+        %td= user.last_sign_in_at
+        %td= user.current_sign_in_ip
+        %td= user.last_sign_in_ip
