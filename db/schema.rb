@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_06_05_090237) do
     t.text "short_description"
     t.string "language", default: "English", null: false
     t.string "level", default: "Beginner", null: false
-    t.integer "price"
+    t.integer "price", default: 0, null: false
     t.index ["slug"], name: "index_courses_on_slug", unique: true
     t.index ["user_id"], name: "index_courses_on_user_id"
   end

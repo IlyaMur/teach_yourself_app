@@ -59,6 +59,7 @@ class CoursesController < ApplicationController
     def set_course
       @course = Course.friendly.find(params[:id])
     end
+    
     def course_params
       params.require(:course).permit(:title, :description, :short_description, :language, :level, :price)
     end
