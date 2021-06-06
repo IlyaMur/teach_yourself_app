@@ -1,4 +1,6 @@
 class Course < ApplicationRecord
+  LANGUAGES = %w[English Polish Russian].freeze
+
   extend FriendlyId
 
   has_rich_text :description
