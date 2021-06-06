@@ -5,13 +5,19 @@
 .row
   .col-md-2
     = search_form_for @q do |f|
-      = f.search_field :title_cont, placeholder: 'название', class: 'form-control form-control-sm'
-      = f.search_field :short_description_cont, placeholder: 'описание', class: 'form-control form-control-sm'
-      = f.select :language_cont, %w[English Russian Polish], include_blank: true, class: 'form-control'
-      = f.search_field :level_cont, placeholder: 'уровень', class: 'form-control form-control-sm'
-      
-      = f.search_field :price_eq, placeholder: 'цены', class: 'form-control form-control-sm'
-      = f.search_field :user_email_cont, placeholder: 'почта ', class: 'form-control form-control-sm'
+      = f.label 'Название'
+      = f.search_field :title_cont, class: 'form-control form-control-sm'
+      = f.label 'Описание'
+      = f.search_field :short_description_cont, class: 'form-control form-control-sm'
+      = f.label 'Язык курса'
+      = f.select :language_cont, Course.languages, include_blank: true, class: 'form-control form-control-sm'
+      = f.label 'Уровень'
+      = f.select :level_cont, Course.levels, include_blank: true, class: 'form-control form-control-sm'
+
+      = f.label 'Цена'
+      = f.search_field :price_eq, class: 'form-control form-control-sm'
+      = f.label 'Наставник'
+      = f.search_field :user_email_cont, class: 'form-control form-control-sm'
       = f.submit 'Искать', class: 'btn btn-sm btn-primary'
       = link_to courses_path, class: 'btn btn-primary btn-sm' do
         .fa.fa-sync

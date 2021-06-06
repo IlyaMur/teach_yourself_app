@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
       @courses = Course.where('title ILIKE ?', "%#{params[:title]}%")
     else
       @q = Course.ransack(params[:q])
-      @courses = @q.result.includes(:user)
+      @courses = @q.result.includes(:user )
     end
   end
 
