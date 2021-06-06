@@ -1,11 +1,12 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[ show edit update destroy ]
+  before_action :set_course, only: %i[show edit update destroy]
 
   def index
     if params[:title]
       @courses = Course.where('title ILIKE ?', "%#{params[:title]}%")
     else
-      @courses = Course.all
+      @q = Course.ransack(params[:q])
+      @courses = @q.result(distinct: true)
     end
   end
 

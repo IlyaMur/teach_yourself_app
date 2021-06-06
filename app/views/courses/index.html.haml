@@ -2,10 +2,19 @@
   Доступные курсы:
   = @courses.count
 
-= link_to 'Создать курс', new_course_path, class: 'btn btn-primary'
-%p 
-
-.card-columns
-  = render partial: 'course', collection: @courses
+.row
+  .col-md-2
+    = search_form_for @q do |f|
+      = f.search_field :title_cont, placeholder: 'название', class: 'form-control form-control-sm'
+      = f.search_field :short_description_cont, placeholder: 'описание', class: 'form-control form-control-sm'
+      = f.search_field :language_cont, placeholder: 'язык', class: 'form-control form-control-sm'
+      = f.search_field :level_cont, placeholder: 'уровень', class: 'form-control form-control-sm'
+      = f.search_field :price_eq, placeholder: 'цены', class: 'form-control form-control-sm'
+      = f.submit 'Искать', class: 'btn btn-sm btn-primary'
+      = link_to courses_path, class: 'btn btn-primary btn-sm' do
+        .fa.fa-sync
+  .col-md-10  
+    .card-columns
+      = render partial: 'course', collection: @courses
 
 
