@@ -17,4 +17,11 @@
     .row
     Настоящий IP
     = user.current_sign_in_ip
+  .card-footer
+    Почта подтверждена?
+    - if user.confirmed_at.present?
+      .badge.badge-success Да
+    - else
+      .badge.badge-danger Нет
+
 

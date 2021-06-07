@@ -1,6 +1,6 @@
 .jumbotron
   %h1.display-4
-    Что хотите выучить сегодня?
+    Чему хотите научиться сегодня?
   .p-2
   - if current_user
     = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
