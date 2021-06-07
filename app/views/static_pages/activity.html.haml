@@ -1,0 +1,20 @@
+%h1 Активность
+
+%table.table
+  %thead
+    %tr 
+      %th №
+      %th тип
+      %th id
+      %th ключ
+      %th данные
+      %th польз-ль
+  %tbody
+  - @activities.each do |act|
+    %tr
+      %td= act.id
+      %td= act.trackable_type
+      %td= act.trackable_id
+      %td= act.key
+      %td= act.parameters
+      %td= act.owner

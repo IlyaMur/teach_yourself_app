@@ -3,6 +3,8 @@ class Course < ApplicationRecord
   LEVELS = %i[Beginner Intermediate Advanced].freeze
 
   extend FriendlyId
+  include PublicActivity::Model
+  tracked owner: Proc.new { |controller, model| controller.current_user }
 
   has_rich_text :description
   belongs_to :user
