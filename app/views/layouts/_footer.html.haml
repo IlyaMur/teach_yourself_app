@@ -1,0 +1,23 @@
+%hr
+
+%footer
+  .container
+    .row
+      .col-md-4
+        Copyright
+        © 
+        = Time.now.year
+        TeachYourself
+        .row
+        .fa.fa-envelope
+        = mail_to 'ilyamur@hotmail.com'
+        .row
+      .col-md-4 
+        Политика конфиденциальности
+        .row
+        Правила
+      .col-md-4
+        О нас
+        .row
+        = link_to 'Создать курс на TeachYourself', new_course_path
+.p-2
