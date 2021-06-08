@@ -2,7 +2,7 @@
   .card-header
     .fa.fa-user
     = user.email
-  .card-footer
+    .row
     Зарегистрирован:
     = time_ago_in_words(user.created_at)
     .row
@@ -23,5 +23,10 @@
       .badge.badge-success Да
     - else
       .badge.badge-danger Нет
+  .card-footer
+    Роль:
+    - user.roles.each do |role|
+      .badge.badge-info
+        = role.name
 
 
